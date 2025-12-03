@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { normalizeSymbol } from "../utils/format.js";
+import Alert from "./Alerts/Alerts.jsx";
 
 const empty = {
   id: null,
@@ -39,7 +40,14 @@ export default function TransactionForm({ editing, onSubmit, onCancel }) {
   return (
     <section className="card">
       <h2>{editing ? "Edit Transaksi" : "Tambah Transaksi"}</h2>
-
+      <div style={{ padding: 24 }}>
+            <Alert
+              type="warning"
+              title="Data Harus Lengkap"
+              message="Pastika harga saham lebih dari Rp 0 dan jumlah lot minimal 1."
+              duration={400000} // auto close 4 detik (optional)
+            />
+          </div>
       <form className="form" onSubmit={handleSubmit}>
         <div>
           <label>Kode Saham</label>
