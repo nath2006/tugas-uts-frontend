@@ -13,7 +13,10 @@ export default function Header({ lastRefresh, refreshing, onRefreshNow }) {
       </div>
       <div className="controls">
         <button className="primary" onClick={onRefreshNow}>
-          Refresh Now
+          Dashboard
+        </button>
+        <button className="primary" onClick={onRefreshNow}>
+          Setting
         </button>
       </div>
     </header>

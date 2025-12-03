@@ -108,7 +108,7 @@ export default function App() {
         onRefreshNow={refreshQuotes}
       />
 
-      <div className="row cols-2">
+      <div className="row cols-1">
         <div className="col">
           <TransactionForm
             editing={editing}
@@ -116,10 +116,12 @@ export default function App() {
             onCancel={() => setEditing(null)}
           />
         </div>
-        <div className="col">
+        {/* <div className="col">
           <SettingsPanel settings={settings} onSave={handleSaveSettings} />
-        </div>
+        </div> */}
       </div>
+
+      <SummaryBar rows={transactions} quotes={quotes} />
 
       <PortfolioTable
         rows={transactions}
@@ -132,7 +134,6 @@ export default function App() {
         onSortChange={setSortKey}
       />
 
-      <SummaryBar rows={transactions} quotes={quotes} />
     </div>
   );
 }

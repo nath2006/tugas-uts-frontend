@@ -40,7 +40,7 @@ export default function TransactionForm({ editing, onSubmit, onCancel }) {
   return (
     <section className="card">
       <h2>{editing ? "Edit Transaksi" : "Tambah Transaksi"}</h2>
-      <div style={{ padding: 24 }}>
+      <div>
             <Alert
               type="warning"
               title="Data Harus Lengkap"
