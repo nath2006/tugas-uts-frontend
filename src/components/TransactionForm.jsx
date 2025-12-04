@@ -45,7 +45,6 @@ export default function TransactionForm({ editing, onSubmit, onCancel }) {
               type="warning"
               title="Data Harus Lengkap"
               message="Pastika harga saham lebih dari Rp 0 dan jumlah lot minimal 1."
-              duration={400000} // auto close 4 detik (optional)
             />
           </div>
       <form className="form" onSubmit={handleSubmit}>

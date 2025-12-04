@@ -129,6 +129,142 @@ VARIABEL UNTUK TIPE ALERT
   stroke-linecap: round;
 }
 
+.alert__actions{
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.alert__actions .btn{
+  appearance:none;
+  border:none;
+  background:#222733;
+  color:inherit;
+  border:1px solid rgba(255,255,255,0.08);
+  padding:8px 10px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
+  font-size:12px;
+  transition:.15s ease;
+}
+
+.alert__actions .btn:hover{
+  transform: translateY(-1px);
+}
+
+.alert__actions .btn-danger{
+  background:#2a1d1d;
+  border-color:#4a2a2a;
+  color:#ffb3b3;
+}
+
+.alert__actions .btn-ghost{
+  background:transparent;
+  border-color:rgba(255,255,255,0.08);
+  color:var(--alert-muted, #b7bcc7);
+}
+
+/* ===== Overlay modal for Alert confirm ===== */
+.alert-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 9999; 
+
+  display: grid;
+  place-items: center; 
+
+  background: rgba(5,7,10,0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  padding: 16px;
+}
+
+.alert-modal{
+  width: 100%;
+  max-width: 560px;  
+  animation: alert-modal-in .18s ease-out;
+}
+
+@keyframes alert-modal-in{
+  from{ opacity:0; transform: translateY(8px) scale(.98); }
+  to{ opacity:1; transform: translateY(0) scale(1); }
+}
+
+.alert{
+  z-index: 10000;
+}
+
+/* ===== Alert confirm hapus===== */
+
+.alert-modal{
+  max-width: 680px;     
+}
+
+
+.alert-overlay .alert{
+  margin: 0;            
+  padding: 18px 20px;   
+  border-radius: 18px;  
+}
+
+.alert-overlay .alert__title{
+  font-size: 16px;
+}
+
+.alert-overlay .alert__message{
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* ===== Layout khusus Alert di modal hapus Start===== */
+.alert-overlay .alert{
+  display: flex;
+  flex-direction: column;
+  align-items: center;     
+  text-align: center;      
+
+  margin: 0;               
+  padding: 20px 22px;      
+  border-radius: 18px;
+  max-width: 100%;
+}
+
+
+.alert-overlay .alert__icon{
+  margin-bottom: 8px;
+  width: 42px;
+  height: 42px;
+}
+
+.alert-overlay .alert__title{
+  font-size: 16px;
+  font-weight: 800;
+  margin-top: 2px;
+}
+
+.alert-overlay .alert__message{
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 4px;
+  max-width: 520px; 
+}
+
+
+.alert-overlay .alert__actions{
+  justify-content: center;
+  margin-top: 14px;
+}
+
+
+.alert-modal{
+  max-width: 680px;
+}
+
+/* ===== Layout khusus Alert di modal hapus End===== */
+
 
 @keyframes alert-in{
   from{

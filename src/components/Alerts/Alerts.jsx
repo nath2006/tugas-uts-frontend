@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import "./style.css";
 
@@ -9,15 +10,19 @@ import "./style.css";
  * - duration: number (ms) optional, auto hilang
  * - onClose: () => void optional
  * - show: boolean optional (controlled)
+ * - actions: ReactNode optional (tombol / custom action)
+ * - hideClose: boolean optional (buat confirm, biasanya close disembunyikan)
  */
 
 export default function Alert({
   type = "info",
   title = "Ini Alert",
   message = "Isi dulu datanya ya bro",
-  duration = 0,
+  duration = 5000,
   onClose,
   show,
+  actions = null,
+  hideClose = false,
 }) {
   const [open, setOpen] = useState(show ?? true);
 
@@ -26,13 +31,12 @@ export default function Alert({
     if (show !== undefined) setOpen(show);
   }, [show]);
 
-  // auto dismiss
   useEffect(() => {
-    if (!duration || !open) return;
+    if (!duration || !open || actions) return;
     const t = setTimeout(() => handleClose(), duration);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [duration, open]);
+  }, [duration, open, actions]);
 
   function handleClose() {
     if (show === undefined) setOpen(false);
@@ -50,18 +54,22 @@ export default function Alert({
       <div className="alert__content">
         <div className="alert__title">{title}</div>
         <div className="alert__message">{message}</div>
+
+        {actions && <div className="alert__actions">{actions}</div>}
       </div>
 
-      <button
-        className="alert__close"
-        onClick={handleClose}
-        aria-label="Close alert"
-        title="Close"
-      >
-        <svg viewBox="0 0 24 24" className="alert__close-icon">
-          <path d="M6 6l12 12M18 6L6 18" />
-        </svg>
-      </button>
+      {!hideClose && (
+        <button
+          className="alert__close"
+          onClick={handleClose}
+          aria-label="Close alert"
+          title="Close"
+        >
+          <svg viewBox="0 0 24 24" className="alert__close-icon">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+      )}
     </div>
   );
 }
