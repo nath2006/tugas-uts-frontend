@@ -39,7 +39,7 @@ export default function SettingsPanel({ settings, onSave }) {
             onChange={(e) => update("apiKey", e.target.value)}
           />
           <div className="hint">
-            Disimpan lokal di browser. Jangan publish key ke publik.
+            Jaga Kerahasian API Key Anda
           </div>
         </div>
 
